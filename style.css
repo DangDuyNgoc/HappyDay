@@ -1,0 +1,156 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Gentium Book Plus", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000b21;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.top-desk , 
+.bottom-desk {
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    perspective: 1000px;
+}
+
+.card, .bottom-desk .top-side,
+.bottom-desk .shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 5px solid #c9aa71;
+    overflow: hidden;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.card::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: url(./open.jpg) center / cover;
+    transition: .25s;
+    transition-delay: .5s;
+}
+
+.card.active {
+    animation: draw 1s ease-in-out forwards;
+}
+
+.card.active::after {
+    opacity: 0;
+}
+
+.card.unactive {
+    animation: undraw 1s ease-in-out forwards;
+}
+
+@keyframes draw {
+    0% {
+        transform: rotateX(60deg) rotateY(180deg);
+    }
+    20% {
+        transform: rotateX(60deg) rotateY(180deg);
+    }
+    100% {
+        transform: translateY(-250px) translateX(calc(-250px * var(--i)));
+        box-shadow: 0 0 30px #e3b93d62;
+    }
+}
+
+@keyframes undraw {
+    0% {
+        transform: translateY(-250px) translateX(calc(-250px * var(--i)));
+        box-shadow: 0 0 30px #e3b93d62;
+    }
+    90%, 100% {
+        transform: rotateX(60deg) rotateY(180deg);
+    }
+}
+
+ @keyframes rotate {
+    from {
+        transform: rotate(90deg);
+    }
+    to {
+      transform: rotate(180deg);;
+    }
+}
+
+.card img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    object-position: center;  
+}
+
+.card .content {
+    height: 40%;
+    padding: 0 15px;
+}
+
+.card .name {
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    color: #e3ba3d;
+    font-weight: 700;
+    text-align: center;
+}
+
+.card .desc {
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+}
+
+.bottom-desk {
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    z-index: -10;
+}
+
+.bottom-desk .top-side {
+    transform: rotateX(60deg) rotateY(180deg);
+    background: url(./open.jpg) center / cover;
+}
+
+.bottom-desk .thickness {
+    position: absolute;
+    width: 113%;
+    height: 60px;
+    top: 75%;
+    background-color: #fddda7;
+    border-radius: 8px;
+}
+
+.bottom-desk .shadow {
+    transform: rotateX(360deg) rotateY(360deg);
+    margin-top: 70px;
+    z-index: -20;
+    border: none;
+    background-color: #a4acdb20;
+    filter: blur(15px);
+}
