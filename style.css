@@ -49,7 +49,7 @@ body {
     content: "";
     width: 100%;
     height: 100%;
-    background: url(./open.jpg) center / cover;
+    background: url(./background.jpg) center / cover;
     transition: .25s;
     transition-delay: .5s;
 }
@@ -91,7 +91,7 @@ body {
 
  @keyframes rotate {
     from {
-        transform: rotate(90deg);
+        transform: rotate(180deg);
     }
     to {
       transform: rotate(180deg);;
@@ -100,7 +100,7 @@ body {
 
 .card img {
     width: 100%;
-    height: 60%;
+    height: 85%;
     object-fit: cover;
     object-position: center;  
 }
@@ -133,8 +133,8 @@ body {
 }
 
 .bottom-desk .top-side {
-    transform: rotateX(60deg) rotateY(180deg);
-    background: url(./open.jpg) center / cover;
+    transform: rotateX(60deg) rotateY(360deg);    
+    background: url(./background.jpg) center / cover;
 }
 
 .bottom-desk .thickness {

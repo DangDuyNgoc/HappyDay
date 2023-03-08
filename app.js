@@ -1,13 +1,16 @@
 const cards = document.querySelectorAll('.card');
+const music = document.querySelector('#playAudio');
 
-cards.forEach((card, index) => {
-    card.addEventListener('click',()=> {
+cards.forEach((card) => {
+    card.addEventListener('click',() => {
+        if(music) {
+            music.play();
+        }
+        console.log(card);
         card.classList.toggle('active');
         card.classList.toggle('unactive');
-    })
-})
+    });
+});
 
-const mp3 = document.querySelector('#playAudio');
-if(mp3) {
-    mp3.play();
-}
+
+
